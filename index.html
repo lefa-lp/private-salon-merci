@@ -1420,6 +1420,54 @@ html.theme-neu .float-cta-inner {
   box-shadow: 6px 6px 18px rgba(172,162,148,.6),
               -4px -4px 12px rgba(255,255,255,.92) !important;
 }
+
+/* ═══════ A/B 比較バー ═══════ */
+.ab-bar {
+  position: fixed;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: min(640px, 100vw);
+  z-index: 999;
+  display: flex;
+  background: rgba(10,8,5,.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.ab-bar a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px 7px;
+  text-decoration: none;
+  gap: 2px;
+}
+.ab-bar a .ab-label {
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.35);
+  text-transform: uppercase;
+}
+.ab-bar a .ab-name {
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.55);
+}
+.ab-bar a.current .ab-label { color: rgba(255,255,255,.55); }
+.ab-bar a.current .ab-name  { color: #fff; font-weight: 500; }
+.ab-bar a.current {
+  border-bottom: 2px solid rgba(255,255,255,.7);
+}
+.ab-bar .ab-divider {
+  width: 1px;
+  background: rgba(255,255,255,.1);
+  align-self: stretch;
+  margin: 6px 0;
+}
+/* バーの分だけ本体を下げる */
+body { padding-top: 46px; }
 </style>
 </head>
 <body>
@@ -1959,6 +2007,19 @@ html.theme-neu .float-cta-inner {
 
 </div><!-- /lp -->
 
+<!-- ━━ A/B 比較バー ━━ -->
+<div class="ab-bar">
+  <a href="index.html" class="current">
+    <span class="ab-label">A · Current</span>
+    <span class="ab-name">Natural デザイン</span>
+  </a>
+  <div class="ab-divider"></div>
+  <a href="merci-odette.html">
+    <span class="ab-label">B · New</span>
+    <span class="ab-name">Odette スタイル</span>
+  </a>
+</div>
+
 <!-- ━━ フローティングCTAボタン ━━ -->
 <div class="float-cta" id="floatCta" style="display:none;">
   <a href="#reservation" class="float-cta-inner">
@@ -2142,9 +2203,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 
-/* Natural テーマ固定 */
 document.documentElement.className = '';
-localStorage.removeItem('merci-theme');
 </script>
 </body>
 </html>
