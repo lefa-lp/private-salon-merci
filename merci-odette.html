@@ -149,6 +149,10 @@ a { text-decoration: none; color: inherit; }
   position: relative; height:580px;
   background: #ccc8c2; overflow:hidden;
 }
+.hero-video {
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+}
 .hero-img {
   position:absolute; inset:0;
   width:100%; height:100%; object-fit:cover;
@@ -462,11 +466,11 @@ a { text-decoration: none; color: inherit; }
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <img
-      src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/549824938_17900698500270828_5690515012618376771_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G8We6e_Hqb0Q7kNvwFWXoZj&_nc_oc=AdrJg9JIQjL3Ut0O-YjzfOqko294h-qUh8ji9HfQrk4mkFRIW1jClg5HMZNdm_3iw7hCY2cTUQiFNS9vaQxnCn4w&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-fOmU3AetxZgDXVdMtBfqfdAfJXTOjBSqN_unG1o34KA&oe=6A39082B"
-      alt="merci" class="hero-img"
-      onerror="this.style.display='none';"
-    />
+    <video class="hero-video" autoplay muted loop playsinline poster="img_facial2.jpg">
+      <source src="hero_video.mp4" type="video/mp4">
+      <source src="hero_video2.mp4" type="video/mp4">
+    </video>
+    <img src="img_facial2.jpg" alt="merci" class="hero-img" style="display:none;" id="heroPoster"/>
     <div class="hero-content">
       <h1 class="hero-title">merci</h1>
       <p class="hero-sub">Private Salon · Itabashi · Tobu-Nerima</p>
@@ -498,6 +502,7 @@ a { text-decoration: none; color: inherit; }
     <h2 class="sec-title">心もお肌も、<br>リセットする時間。</h2>
     <p class="sec-ja">サロンについて</p>
     <div class="liner"></div>
+    <img src="img_herb.jpg" alt="よもぎ・ハーブ" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;margin-bottom:36px;">
     <div class="about-body">
       <p>板橋・東武練馬にある、完全予約制のプライベートサロン。</p>
       <p>元アスリートセラピストが贈る<br>よもぎ蒸し × フェイシャルエステ。</p>
@@ -561,7 +566,7 @@ a { text-decoration: none; color: inherit; }
   </section>
   <div class="menu-index-grid">
     <a href="#menu-1" class="menu-thumb">
-      <img src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/549824938_17900698500270828_5690515012618376771_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G8We6e_Hqb0Q7kNvwFWXoZj&_nc_oc=AdrJg9JIQjL3Ut0O-YjzfOqko294h-qUh8ji9HfQrk4mkFRIW1jClg5HMZNdm_3iw7hCY2cTUQiFNS9vaQxnCn4w&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-fOmU3AetxZgDXVdMtBfqfdAfJXTOjBSqN_unG1o34KA&oe=6A39082B" alt="よもぎ蒸し＋フェイシャルセット" class="menu-thumb-img" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+      <img src="img_facial2.jpg" alt="よもぎ蒸し＋フェイシャルセット" class="menu-thumb-img">
       <div class="menu-thumb-body">
         <p class="menu-thumb-en">Yomogi &amp; Facial Set</p>
         <p class="menu-thumb-ja">よもぎ蒸し＋フェイシャル</p>
@@ -569,7 +574,7 @@ a { text-decoration: none; color: inherit; }
       </div>
     </a>
     <a href="#menu-2" class="menu-thumb">
-      <img src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/610252204_17913460014270828_8075496237430635369_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G2Qv9RPkiuQQ7kNvwHwJIge&_nc_oc=AdqNX8eMzpmwSTSAGAAigOnnl7yzElaxu49Di9hZYsARrbLsH6wsht_LHQdC3ivnvkhPxmhgbIPcjS2Y8UE9OIVt&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af8AOH-KwLW_lILnZUSRiyU7z4ixffs-3VZcZ-_4xltz-w&oe=6A3927B0" alt="よもぎ蒸し" class="menu-thumb-img" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+      <img src="img_herb.jpg" alt="よもぎ蒸し" class="menu-thumb-img">
       <div class="menu-thumb-body">
         <p class="menu-thumb-en">Yomogi &amp; Herb Steam</p>
         <p class="menu-thumb-ja">よもぎ＆ハーブ蒸し</p>
@@ -577,7 +582,7 @@ a { text-decoration: none; color: inherit; }
       </div>
     </a>
     <a href="#menu-3" class="menu-thumb">
-      <img src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/588711883_17912474460270828_4734134785134710276_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=KfF3TFvAJEcQ7kNvwG7HxO9&_nc_oc=Ado-AG1MP7-SUJrW2zj99TDfJEcl96W6a3nr0BADErzsU-Xt52Hb_9eCoeFzS4DDhG5MQfMa1Ye3h6FO0Hxt0dKy&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-n7pA_5blL9zgutow8Xxxv0HOlfwx8WyaUUpy4IHGpSg&oe=6A3927C6" alt="フェイシャルエステ" class="menu-thumb-img" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+      <img src="img_facial1.jpg" alt="フェイシャルエステ" class="menu-thumb-img">
       <div class="menu-thumb-body">
         <p class="menu-thumb-en">Facial Esthetics</p>
         <p class="menu-thumb-ja">フェイシャルエステ</p>
@@ -585,7 +590,7 @@ a { text-decoration: none; color: inherit; }
       </div>
     </a>
     <a href="#menu-4" class="menu-thumb">
-      <img src="https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/641786649_17920056783270828_5084836894246848682_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Rx587FCgVG0Q7kNvwHGpJgT&_nc_oc=AdqzzI_uQFLka0D-ckGDja7VVK0y4rB1PTbIHVK5gScV24HFTutnG7FdO-OGWfLHqVsQ9vJ-Bzt8GMCdI9xNN3iG&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-Dw0IE90vTvePrpg7gMtgdPsDYJYS__pzyga7MQnkPkg&oe=6A39341A" alt="ボディケア" class="menu-thumb-img" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+      <img src="img_facial2.jpg" alt="ボディケア" class="menu-thumb-img">
       <div class="menu-thumb-body">
         <p class="menu-thumb-en">Body Care</p>
         <p class="menu-thumb-ja">ボディケア</p>
@@ -596,7 +601,7 @@ a { text-decoration: none; color: inherit; }
 
   <!-- TREATMENT 1: よもぎ蒸し＋フェイシャルセット -->
   <div class="treatment reveal" id="menu-1">
-    <img src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/549824938_17900698500270828_5690515012618376771_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G8We6e_Hqb0Q7kNvwFWXoZj&_nc_oc=AdrJg9JIQjL3Ut0O-YjzfOqko294h-qUh8ji9HfQrk4mkFRIW1jClg5HMZNdm_3iw7hCY2cTUQiFNS9vaQxnCn4w&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-fOmU3AetxZgDXVdMtBfqfdAfJXTOjBSqN_unG1o34KA&oe=6A39082B" alt="よもぎ蒸し＋フェイシャルセット" class="treatment-photo" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+    <img src="img_facial2.jpg" alt="よもぎ蒸し＋フェイシャルセット" class="treatment-photo">
     <div class="treatment-body">
       <span class="treatment-label">Treatment Menu · 人気No.1</span>
       <p class="treatment-en">Yomogi &amp; Facial Set</p>
@@ -614,7 +619,7 @@ a { text-decoration: none; color: inherit; }
 
   <!-- TREATMENT 2: よもぎ＆ハーブ蒸し -->
   <div class="treatment reveal" id="menu-2">
-    <img src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/610252204_17913460014270828_8075496237430635369_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G2Qv9RPkiuQQ7kNvwHwJIge&_nc_oc=AdqNX8eMzpmwSTSAGAAigOnnl7yzElaxu49Di9hZYsARrbLsH6wsht_LHQdC3ivnvkhPxmhgbIPcjS2Y8UE9OIVt&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af8AOH-KwLW_lILnZUSRiyU7z4ixffs-3VZcZ-_4xltz-w&oe=6A3927B0" alt="よもぎ蒸し" class="treatment-photo" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+    <img src="img_herb.jpg" alt="よもぎ＆ハーブ蒸し" class="treatment-photo">
     <div class="treatment-body">
       <span class="treatment-label">Treatment Menu · Single</span>
       <p class="treatment-en">Yomogi &amp; Herb Steam</p>
@@ -632,7 +637,7 @@ a { text-decoration: none; color: inherit; }
 
   <!-- TREATMENT 3: フェイシャルエステ -->
   <div class="treatment reveal" id="menu-3">
-    <img src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/588711883_17912474460270828_4734134785134710276_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=KfF3TFvAJEcQ7kNvwG7HxO9&_nc_oc=Ado-AG1MP7-SUJrW2zj99TDfJEcl96W6a3nr0BADErzsU-Xt52Hb_9eCoeFzS4DDhG5MQfMa1Ye3h6FO0Hxt0dKy&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-n7pA_5blL9zgutow8Xxxv0HOlfwx8WyaUUpy4IHGpSg&oe=6A3927C6" alt="フェイシャルエステ" class="treatment-photo" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+    <img src="img_facial1.jpg" alt="フェイシャルエステ" class="treatment-photo">
     <div class="treatment-body">
       <span class="treatment-label">Treatment Menu · Single</span>
       <p class="treatment-en">Facial Esthetics</p>
@@ -650,7 +655,7 @@ a { text-decoration: none; color: inherit; }
 
   <!-- TREATMENT 4: ボディケア -->
   <div class="treatment reveal" id="menu-4">
-    <img src="https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/641786649_17920056783270828_5084836894246848682_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Rx587FCgVG0Q7kNvwHGpJgT&_nc_oc=AdqzzI_uQFLka0D-ckGDja7VVK0y4rB1PTbIHVK5gScV24HFTutnG7FdO-OGWfLHqVsQ9vJ-Bzt8GMCdI9xNN3iG&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-Dw0IE90vTvePrpg7gMtgdPsDYJYS__pzyga7MQnkPkg&oe=6A39341A" alt="ボディケア" class="treatment-photo" onerror="this.style.background='#ccc8c2';this.removeAttribute('src');">
+    <img src="img_facial1.jpg" alt="ボディケア" class="treatment-photo">
     <div class="treatment-body">
       <span class="treatment-label">Treatment Menu · Option</span>
       <p class="treatment-en">Body Care</p>
