@@ -8,41 +8,38 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════
-   private salon merci — Odette スタイル
-   参考: salon-odette.com
-══════════════════════════════════════ */
+/* ─────────────────────────────────────────
+   private salon merci — Odette style
+───────────────────────────────────────── */
 :root {
-  --bg:        #faf8f5;
-  --bg-alt:    #f4f0eb;
-  --white:     #ffffff;
-  --black:     #1a1814;
-  --gray:      #5a5550;
-  --lg:        #aba7a2;
-  --border:    #e5e0da;
-  --acc:       #9c856e;
-  --acc-light: #c4a882;
+  --cream:   #f5f3ef;
+  --white:   #ffffff;
+  --black:   #1a1816;
+  --mid:     #6b6762;
+  --light:   #a8a4a0;
+  --border:  #dedad5;
+  --acc:     #8a7260;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', sans-serif;
-  background: var(--bg-alt);
-  color: var(--black);
-  font-size: 14px;
-  line-height: 1.85;
+  font-family: 'Noto Sans JP', sans-serif;
   font-weight: 300;
+  font-size: 14px;
+  line-height: 1.9;
+  background: var(--cream);
+  color: var(--black);
   padding-top: 46px;
 }
-.lp { max-width: 640px; margin: 0 auto; background: var(--bg); overflow: hidden; }
+img { display: block; width: 100%; }
 
-/* ═══ A/B バー ═══ */
+/* ─── A/B バー ─── */
 .ab-bar {
   position: fixed;
   top: 0; left: 50%;
   transform: translateX(-50%);
-  width: min(640px, 100vw);
-  z-index: 999;
+  width: min(640px,100vw);
+  z-index: 1000;
   display: flex;
   background: rgba(10,8,5,.92);
   backdrop-filter: blur(10px);
@@ -51,31 +48,27 @@ body {
 }
 .ab-bar a {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
   padding: 8px 4px 7px;
-  text-decoration: none;
-  gap: 2px;
+  text-decoration: none; gap: 2px;
 }
-.ab-bar a .ab-label { font-size: 9px; letter-spacing: .18em; color: rgba(255,255,255,.35); text-transform: uppercase; }
-.ab-bar a .ab-name  { font-size: 12px; letter-spacing: .08em; color: rgba(255,255,255,.55); }
+.ab-bar .ab-label { font-size: 9px; letter-spacing: .18em; color: rgba(255,255,255,.35); text-transform: uppercase; }
+.ab-bar .ab-name  { font-size: 12px; letter-spacing: .08em; color: rgba(255,255,255,.55); }
 .ab-bar a.current .ab-label { color: rgba(255,255,255,.55); }
-.ab-bar a.current .ab-name  { color: #fff; font-weight: 500; }
+.ab-bar a.current .ab-name  { color: #fff; font-weight: 400; }
 .ab-bar a.current { border-bottom: 2px solid rgba(255,255,255,.7); }
-.ab-bar .ab-div { width: 1px; background: rgba(255,255,255,.1); align-self: stretch; margin: 6px 0; }
+.ab-bar .ab-div   { width: 1px; background: rgba(255,255,255,.1); align-self: stretch; margin: 6px 0; }
 
-/* ═══ アニメーション ═══ */
-@keyframes fadein { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
-.reveal { opacity:0; transform:translateY(22px); transition: opacity .9s ease, transform .9s ease; }
-.reveal.visible { opacity:1; transform:none; }
+/* ─── WRAPPER ─── */
+.lp { max-width: 640px; margin: 0 auto; background: var(--cream); overflow: hidden; }
 
-/* ═══ NAV ═══ */
-.od-nav {
+/* ─── NAV ─── */
+.site-nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 16px 28px;
+  padding: 0 20px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,444 +76,578 @@ body {
   top: 46px;
   z-index: 100;
 }
-.od-logo {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: .2em;
-  color: var(--black);
-  line-height: 1.3;
-}
-.od-logo small {
-  display: block;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 9px;
-  letter-spacing: .14em;
-  color: var(--lg);
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
   font-weight: 300;
-  margin-top: 2px;
-}
-.od-nav-cta {
-  font-size: 11px;
-  letter-spacing: .14em;
+  font-size: 16px;
+  letter-spacing: .1em;
   color: var(--black);
-  border: 1px solid var(--black);
-  padding: 8px 18px;
   text-decoration: none;
-  transition: background .2s, color .2s;
 }
-.od-nav-cta:hover { background: var(--black); color: var(--white); }
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: var(--mid);
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
-/* ═══ HERO ═══ */
-.od-hero {
+/* ─── HERO ─── */
+.hero {
   position: relative;
-  height: 560px;
+  height: 580px;
   overflow: hidden;
-  background: linear-gradient(160deg, #ded8d0 0%, #c8c2ba 50%, #b8b2a8 100%);
+  background: #cec8c0;
 }
-.od-hero-img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.od-hero-overlay {
+.hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.08) 0%, rgba(0,0,0,.25) 100%);
+  background: rgba(0,0,0,.18);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 0 24px;
 }
-.od-hero-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 58px;
-  font-weight: 300;
+.hero-en {
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  color: var(--white);
-  letter-spacing: .05em;
-  line-height: 1.1;
-  text-shadow: 0 2px 24px rgba(0,0,0,.18);
-  margin-bottom: 8px;
-  animation: fadein .9s ease both;
-}
-.od-hero-ja {
-  font-size: 11px;
-  color: rgba(255,255,255,.75);
-  letter-spacing: .22em;
-  margin-bottom: 36px;
-  animation: fadein .9s .15s ease both;
-}
-.od-hero-btn {
-  font-size: 12px;
-  letter-spacing: .18em;
-  color: var(--white);
-  border: 1px solid rgba(255,255,255,.65);
-  padding: 13px 32px;
-  text-decoration: none;
-  backdrop-filter: blur(4px);
-  background: rgba(255,255,255,.08);
-  transition: background .25s;
-  animation: fadein .9s .3s ease both;
-}
-.od-hero-btn:hover { background: rgba(255,255,255,.2); }
-
-/* ═══ SECTION BASE ═══ */
-.od-sec { padding: 72px 36px; }
-.od-sec.alt   { background: var(--bg-alt); }
-.od-sec.white { background: var(--white); }
-.od-sec.dark  { background: var(--black); }
-
-.od-en {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 30px;
   font-weight: 300;
-  font-style: italic;
-  color: var(--black);
+  font-size: 74px;
+  color: var(--white);
   letter-spacing: .04em;
-  text-align: center;
-  margin-bottom: 6px;
+  line-height: 1;
+  text-shadow: 0 2px 30px rgba(0,0,0,.2);
 }
-.od-sec.dark .od-en { color: rgba(255,255,255,.9); }
-.od-ja {
+.hero-sub {
   font-size: 10px;
   letter-spacing: .26em;
-  color: var(--lg);
-  text-align: center;
-  margin-bottom: 36px;
+  color: rgba(255,255,255,.7);
   text-transform: uppercase;
+  margin: 14px 0 40px;
 }
-.od-sec.dark .od-ja { color: rgba(255,255,255,.35); }
-.od-rule {
-  width: 1px; height: 44px;
-  background: var(--border);
-  margin: 0 auto 36px;
+.hero-btn {
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,.6);
+  padding: 13px 36px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(4px);
+  transition: background .25s;
 }
-.od-sec.dark .od-rule { background: rgba(255,255,255,.18); }
+.hero-btn:hover { background: rgba(255,255,255,.18); }
 
-/* ═══ ABOUT ═══ */
-.od-about-img {
-  width: 100%;
-  aspect-ratio: 3/2;
-  object-fit: cover;
+/* ─── SECTION SHARED ─── */
+.sec {
+  padding: 80px 40px;
+  background: var(--cream);
+}
+.sec.white  { background: var(--white); }
+.sec.dark   { background: var(--black); }
+
+.sec-label {
   display: block;
-  background: linear-gradient(135deg, #e8e0d4 0%, #d0c8bc 100%);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: .3em;
+  color: var(--light);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 32px;
+  letter-spacing: .04em;
+  color: var(--black);
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.sec-ja {
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--light);
+  text-align: center;
   margin-bottom: 44px;
 }
-.od-body {
-  font-size: 13px;
-  color: var(--gray);
-  line-height: 2.1;
-  letter-spacing: .04em;
-  text-align: center;
-}
-.od-body p + p { margin-top: 1.2em; }
-.od-body .note {
-  margin-top: 28px;
-  font-size: 10px;
-  letter-spacing: .18em;
-  color: var(--lg);
-  text-transform: uppercase;
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-}
+.sec.dark .sec-title { color: var(--white); }
+.sec.dark .sec-ja    { color: rgba(255,255,255,.4); }
+.sec.dark .sec-label { color: rgba(255,255,255,.3); }
 
-/* ═══ CONCERNS ═══ */
-.od-worries { list-style: none; }
-.od-worry-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-  color: var(--gray);
+/* ─── DIVIDER LINE ─── */
+.liner {
+  width: 1px;
+  height: 50px;
+  background: var(--border);
+  margin: 0 auto 44px;
+}
+.sec.dark .liner { background: rgba(255,255,255,.2); }
+
+/* ─── ABOUT ─── */
+.about-text {
+  font-size: 13.5px;
+  line-height: 2.2;
+  color: var(--mid);
+  text-align: center;
   letter-spacing: .03em;
 }
-.od-worry-item:first-child { border-top: 1px solid var(--border); }
-.od-worry-dash { color: var(--acc-light); flex-shrink: 0; }
+.about-text p + p { margin-top: 1.4em; }
+.about-tags {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.about-tag {
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: var(--light);
+  text-transform: uppercase;
+}
+.about-tag::before { content: '— '; }
 
-/* ═══ PROFILE ═══ */
-.od-profile-wrap { text-align: center; }
-.od-profile-img {
-  width: 150px; height: 150px;
+/* ─── CONCERN ─── */
+.concern-list {
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+.concern-list li {
+  padding: 16px 0 16px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--mid);
+  letter-spacing: .03em;
+  position: relative;
+}
+.concern-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 6px; height: 1px;
+  background: var(--light);
+}
+.concern-close {
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--mid);
+  text-align: center;
+  line-height: 2;
+  letter-spacing: .03em;
+}
+
+/* ─── PROFILE ─── */
+.profile-photo {
+  width: 180px; height: 180px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
   margin: 0 auto 28px;
-  background: linear-gradient(135deg, #e8e0d4, #c8bfb4);
+  background: #ccc8c2;
 }
-.od-prof-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 24px;
+.profile-name {
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  letter-spacing: .08em;
+  font-size: 22px;
+  letter-spacing: .12em;
+  text-align: center;
   margin-bottom: 4px;
 }
-.od-prof-title {
+.profile-role {
   font-size: 10px;
   letter-spacing: .2em;
-  color: var(--lg);
-  margin-bottom: 28px;
+  color: var(--light);
+  text-align: center;
   text-transform: uppercase;
+  margin-bottom: 32px;
 }
-.od-prof-text {
+.profile-body {
   font-size: 13px;
-  color: var(--gray);
-  line-height: 2.1;
-  text-align: left;
-  max-width: 500px;
-  margin: 0 auto 28px;
+  line-height: 2.2;
+  color: var(--mid);
+  letter-spacing: .03em;
 }
-.od-badges {
+.profile-body p + p { margin-top: 1.2em; }
+.profile-certs {
+  margin-top: 28px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  margin-top: 20px;
 }
-.od-badge {
+.cert {
   font-size: 11px;
   color: var(--acc);
   border: 1px solid var(--border);
   padding: 5px 14px;
-  letter-spacing: .06em;
+  letter-spacing: .05em;
 }
 
-/* ═══ EFFECTS ═══ */
-.od-effects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  margin-top: 8px;
-}
-.od-effect {
-  background: var(--bg);
-  padding: 28px 20px;
-  text-align: center;
-}
-.od-sec.alt .od-effect { background: var(--bg-alt); }
-.od-eff-icon { font-size: 28px; margin-bottom: 10px; }
-.od-eff-name { font-size: 14px; font-weight: 400; margin-bottom: 5px; letter-spacing: .04em; }
-.od-eff-desc { font-size: 11px; color: var(--lg); line-height: 1.7; }
-
-/* ═══ TREATMENT MENU ═══ */
-.od-menu-photo {
+/* ─── TREATMENT MENU ─── */
+.menu-intro-photo {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 3/2;
   object-fit: cover;
   display: block;
-  background: linear-gradient(135deg, #e0d8cc 0%, #c8c0b4 100%);
-  margin-bottom: -1px;
+  background: #c8c2ba;
 }
-.od-menu-list { border-top: 1px solid var(--border); }
-.od-menu-item {
-  padding: 32px 0;
-  border-bottom: 1px solid var(--border);
+.menu-list { }
+.menu-item {
+  background: var(--white);
+  border-top: 1px solid var(--border);
 }
-.od-menu-tag {
-  display: block;
-  font-size: 10px;
-  letter-spacing: .22em;
-  color: var(--acc);
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-.od-menu-en {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: .04em;
-  margin-bottom: 2px;
-}
-.od-menu-ja { font-size: 12px; color: var(--gray); letter-spacing: .1em; margin-bottom: 10px; }
-.od-menu-time { font-size: 11px; color: var(--lg); letter-spacing: .1em; margin-bottom: 10px; }
-.od-menu-desc { font-size: 12px; color: var(--gray); line-height: 2; margin-bottom: 14px; }
-.od-menu-price {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 24px;
-  font-weight: 300;
-  color: var(--black);
-  letter-spacing: .04em;
-}
-.od-menu-price sub {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 11px;
-  color: var(--lg);
-  font-weight: 300;
-  letter-spacing: .06em;
-  margin-left: 4px;
-  vertical-align: middle;
-}
-
-/* ═══ FULL-WIDTH PHOTO ═══ */
-.od-fullphoto {
+.menu-item:last-child { border-bottom: 1px solid var(--border); }
+.menu-item-photo {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
-  background: linear-gradient(135deg, #e8ddd4 0%, #c8bfb4 100%);
+  background: #ccc8c2;
 }
-
-/* ═══ FLOW ═══ */
-.od-flow { }
-.od-flow-item {
+.menu-item-body {
+  padding: 32px 40px 40px;
+}
+.menu-item-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--acc);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.menu-item-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 26px;
+  letter-spacing: .04em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.menu-item-ja {
+  font-size: 12px;
+  color: var(--light);
+  letter-spacing: .12em;
+  margin-bottom: 18px;
+}
+.menu-item-desc {
+  font-size: 13px;
+  line-height: 2.1;
+  color: var(--mid);
+  margin-bottom: 20px;
+  letter-spacing: .03em;
+}
+.menu-item-info {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  padding: 24px 0;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.menu-item-time {
+  font-size: 11px;
+  color: var(--light);
+  letter-spacing: .1em;
+}
+.menu-item-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: .05em;
+  color: var(--black);
+}
+.menu-item-price sub {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+  color: var(--light);
+  font-weight: 300;
+  letter-spacing: .05em;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+.menu-note-box {
+  background: var(--cream);
+  padding: 24px 40px;
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.9;
+  letter-spacing: .03em;
+  text-align: center;
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
-.od-flow-item:first-child { border-top: 1px solid var(--border); }
-.od-flow-num {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 36px;
+
+/* ─── FLOW ─── */
+.flow-list { }
+.flow-item {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+}
+.flow-item:first-child { border-top: 1px solid var(--border); }
+.flow-num {
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  color: rgba(0,0,0,.1);
+  font-size: 40px;
+  color: var(--border);
   line-height: 1;
   flex-shrink: 0;
-  width: 40px;
-  padding-top: 2px;
+  width: 46px;
 }
-.od-flow-body { flex: 1; }
-.od-flow-body h3 { font-size: 14px; font-weight: 400; margin-bottom: 4px; letter-spacing: .04em; }
-.od-flow-body p  { font-size: 12px; color: var(--gray); line-height: 1.9; }
+.flow-body h3 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  margin-bottom: 5px;
+}
+.flow-body p {
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.9;
+}
 
-/* ═══ VOICE ═══ */
-.od-voice-item {
-  padding: 28px 0;
+/* ─── VOICE ─── */
+.voice-item {
+  padding: 32px 0;
   border-bottom: 1px solid var(--border);
 }
-.od-voice-item:first-child { border-top: 1px solid var(--border); }
-.od-stars { font-size: 14px; color: var(--acc-light); letter-spacing: 3px; margin-bottom: 10px; }
-.od-voice-title { font-size: 14px; font-weight: 400; color: var(--black); margin-bottom: 8px; letter-spacing: .03em; }
-.od-voice-body  { font-size: 12px; color: var(--gray); line-height: 2; margin-bottom: 10px; }
-.od-voice-attr  { font-size: 10px; color: var(--lg); letter-spacing: .12em; text-transform: uppercase; }
+.voice-item:first-child { border-top: 1px solid var(--border); }
+.voice-stars {
+  font-size: 13px;
+  color: var(--acc);
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+.voice-title {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .03em;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+.voice-body {
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 2.1;
+  margin-bottom: 10px;
+}
+.voice-attr {
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: var(--light);
+  text-transform: uppercase;
+}
+.voice-more {
+  display: block;
+  text-align: center;
+  margin-top: 32px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--mid);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-/* ═══ ACCESS ═══ */
-.od-map {
+/* ─── FAQ ─── */
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  font-size: 13px;
+  letter-spacing: .04em;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+}
+.faq-toggle {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: var(--light);
+  font-weight: 300;
+  transition: transform .3s;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1;
+}
+.faq-a {
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 2;
+  padding: 0 0 18px;
+  display: none;
+  letter-spacing: .03em;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-item.open .faq-a { display: block; }
+
+/* ─── ACCESS ─── */
+.map-box {
   width: 100%;
-  height: 200px;
-  background: #eae6e0;
+  height: 220px;
+  background: #e5e2dc;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--lg);
-  font-size: 12px;
-  letter-spacing: .12em;
+  color: var(--light);
+  font-size: 11px;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
-.od-info { width: 100%; border-collapse: collapse; }
-.od-info tr td {
-  padding: 13px 0;
+.access-table { width: 100%; border-collapse: collapse; }
+.access-table tr td {
+  padding: 14px 0;
   border-bottom: 1px solid var(--border);
   font-size: 13px;
   vertical-align: top;
+  line-height: 1.8;
 }
-.od-info tr:last-child td { border-bottom: none; }
-.od-info tr td:first-child {
-  width: 84px;
+.access-table tr:last-child td { border-bottom: none; }
+.access-table tr td:first-child {
+  width: 80px;
   font-size: 10px;
-  letter-spacing: .12em;
-  color: var(--lg);
+  letter-spacing: .14em;
+  color: var(--light);
   text-transform: uppercase;
-  padding-top: 15px;
+  padding-top: 16px;
 }
+.access-table a { color: var(--acc); text-decoration: none; }
 
-/* ═══ RESERVATION ═══ */
-.od-res-inner { text-align: center; }
-.od-res-text {
+/* ─── RESERVATION ─── */
+.res-text {
   font-size: 13px;
-  color: rgba(255,255,255,.6);
-  line-height: 2;
-  margin-bottom: 40px;
+  color: rgba(255,255,255,.55);
+  text-align: center;
+  line-height: 2.2;
+  margin-bottom: 44px;
   letter-spacing: .04em;
 }
-.od-btns { display: flex; flex-direction: column; gap: 14px; max-width: 320px; margin: 0 auto; }
-.od-btn {
+.res-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.res-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 16px 24px;
-  font-size: 13px;
-  letter-spacing: .1em;
+  padding: 17px 24px;
+  font-size: 12px;
+  letter-spacing: .12em;
   text-decoration: none;
   border: 1px solid;
   transition: .2s;
 }
-.od-btn.insta { border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.8); background: transparent; }
-.od-btn.insta:hover { background: rgba(255,255,255,.08); }
-.od-btn.line   { background: #06c755; border-color: #06c755; color: #fff; }
-.od-btn.line:hover { background: #05a848; }
+.res-btn.line  { background: #06c755; border-color: #06c755; color: #fff; }
+.res-btn.insta { border-color: rgba(255,255,255,.28); color: rgba(255,255,255,.75); background: transparent; }
+.res-btn.insta:hover { background: rgba(255,255,255,.07); }
+.res-note {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .08em;
+  line-height: 1.9;
+}
 
-/* ═══ FOOTER ═══ */
-.od-footer {
+/* ─── FOOTER ─── */
+.footer {
   background: #111;
-  padding: 40px 32px;
+  padding: 44px 40px;
   text-align: center;
 }
-.od-footer-logo {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 17px;
-  font-weight: 300;
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  color: rgba(255,255,255,.65);
-  letter-spacing: .2em;
-  margin-bottom: 20px;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 22px;
 }
-.od-footer-links {
+.footer-nav {
   display: flex;
   justify-content: center;
-  gap: 28px;
-  margin-bottom: 20px;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
 }
-.od-footer-links a {
+.footer-nav a {
   font-size: 10px;
-  color: rgba(255,255,255,.35);
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.28);
   text-decoration: none;
-  letter-spacing: .12em;
   text-transform: uppercase;
 }
-.od-footer-copy { font-size: 10px; color: rgba(255,255,255,.25); letter-spacing: .08em; }
+.footer-copy {
+  font-size: 10px;
+  color: rgba(255,255,255,.18);
+  letter-spacing: .06em;
+  line-height: 1.8;
+}
 
-/* ═══ FLOAT CTA ═══ */
-.od-float {
+/* ─── FLOAT CTA ─── */
+.float-cta {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 200;
-  width: calc(min(640px, 100vw) - 48px);
+  width: calc(min(640px,100vw) - 48px);
   display: none;
 }
-.od-float a {
+.float-cta a {
   display: block;
   background: var(--black);
   color: var(--white);
   text-align: center;
   padding: 16px;
-  font-size: 13px;
-  letter-spacing: .12em;
+  font-size: 12px;
+  letter-spacing: .14em;
   text-decoration: none;
-  transition: background .2s;
+  text-transform: uppercase;
 }
-.od-float a:hover { background: #333; }
+
+/* ─── REVEAL ─── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .85s ease,transform .85s ease; }
+.reveal.visible { opacity:1; transform:none; }
 
 @media (max-width: 480px) {
-  .od-hero { height: 480px; }
-  .od-hero-title { font-size: 44px; }
-  .od-sec { padding: 56px 24px; }
+  .hero { height: 500px; }
+  .hero-en { font-size: 56px; }
+  .sec { padding: 60px 28px; }
+  .menu-item-body { padding: 28px 28px 36px; }
 }
 </style>
 </head>
 <body>
 
-<!-- A/B 比較バー -->
+<!-- A/B バー -->
 <div class="ab-bar">
   <a href="index.html">
     <span class="ab-label">A · Current</span>
@@ -536,342 +663,368 @@ body {
 <div class="lp">
 
   <!-- NAV -->
-  <nav class="od-nav">
-    <span class="od-logo">
-      private salon merci
-      <small>板橋・東武練馬 よもぎ蒸し＆フェイシャル</small>
-    </span>
-    <a href="#reservation" class="od-nav-cta">予約する</a>
+  <nav class="site-nav">
+    <a href="#" class="nav-logo">merci</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#voice">Voice</a></li>
+      <li><a href="#reservation">予約</a></li>
+    </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="od-hero">
-    <div class="od-hero-overlay">
-      <h1 class="od-hero-title">merci</h1>
-      <p class="od-hero-ja">PRIVATE SALON · ITABASHI · TOBU-NERIMA</p>
-      <a href="#reservation" class="od-hero-btn">初回体験を予約する →</a>
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1 class="hero-en">merci</h1>
+      <p class="hero-sub">Private Salon · Itabashi · Tobu-Nerima</p>
+      <a href="#reservation" class="hero-btn">Book a Trial →</a>
     </div>
   </section>
 
   <!-- ABOUT THE SALON -->
-  <section class="od-sec white reveal">
-    <p class="od-en">About the salon</p>
-    <p class="od-ja">サロンについて</p>
-    <div class="od-rule"></div>
-    <div class="od-about-img"></div>
-    <div class="od-body">
-      <p>板橋・東武練馬にある、完全予約制のプライベートサロン。</p>
-      <p>よもぎ蒸しとフェイシャルエステを組み合わせた<br>ホリスティックなケアで、心とお肌をリセットします。</p>
-      <p>あなただけの時間と空間で、<br>内側からの美しさを引き出す施術をお届けします。</p>
-      <div class="note">
-        <span>完全個室</span>
-        <span>·</span>
-        <span>完全予約制</span>
-        <span>·</span>
-        <span>女性専用</span>
-      </div>
+  <section class="sec white reveal" id="about">
+    <span class="sec-label">About the salon</span>
+    <h2 class="sec-title">心もお肌も、<br>リセットする時間。</h2>
+    <p class="sec-ja">サロンについて</p>
+    <div class="liner"></div>
+    <div class="about-text">
+      <p>板橋・東武練馬にある、完全予約制のプライベートサロン。<br>元アスリートセラピストが贈る、<br>よもぎ蒸し × フェイシャルエステ。</p>
+      <p>よもぎとハーブの蒸気が体を芯から温め、毛穴が開いた最高の状態でフェイシャルケアを行います。表面だけでなく体の内側からアプローチするから、翌日以降も続く実感が生まれます。</p>
+      <p>あなた一人のための時間と空間で、<br>丁寧に、ゆっくりと。</p>
+    </div>
+    <div class="about-tags">
+      <span class="about-tag">完全個室</span>
+      <span class="about-tag">完全予約制</span>
+      <span class="about-tag">女性専用</span>
+      <span class="about-tag">東武練馬駅 徒歩10分</span>
     </div>
   </section>
 
   <!-- YOUR CONCERNS -->
-  <section class="od-sec alt reveal">
-    <p class="od-en">Your Concerns</p>
-    <p class="od-ja">こんなお悩みはありませんか</p>
-    <div class="od-rule"></div>
-    <ul class="od-worries">
-      <li class="od-worry-item"><span class="od-worry-dash">—</span>肌荒れ・乾燥・くすみが気になる</li>
-      <li class="od-worry-item"><span class="od-worry-dash">—</span>冷えやむくみ、生理不順が続いている</li>
-      <li class="od-worry-item"><span class="od-worry-dash">—</span>ストレスが溜まり、疲れが取れない</li>
-      <li class="od-worry-item"><span class="od-worry-dash">—</span>自分だけのプライベートな時間が欲しい</li>
-      <li class="od-worry-item"><span class="od-worry-dash">—</span>本格的なエステを身近に体験したい</li>
-      <li class="od-worry-item"><span class="od-worry-dash">—</span>よもぎ蒸しに興味があるが、どこに行けばいいか分からない</li>
+  <section class="sec reveal">
+    <span class="sec-label">Concern</span>
+    <h2 class="sec-title">こんなお悩み、<br>ありませんか？</h2>
+    <p class="sec-ja">お悩み</p>
+    <div class="liner"></div>
+    <ul class="concern-list">
+      <li>毛穴の開き・黒ずみがずっと気になっている</li>
+      <li>肌のくすみが取れず、透明感がない</li>
+      <li>フェイスラインのたるみが目立ってきた</li>
+      <li>冷えやむくみが慢性化している</li>
+      <li>生理前の不調（PMS）が毎月つらい</li>
+      <li>忙しくて、自分のためのケア時間が取れない</li>
     </ul>
+    <p class="concern-close">
+      その悩み、よもぎ蒸しとフェイシャルの組み合わせで<br>体の内側から解決できるかもしれません。
+    </p>
   </section>
-
-  <!-- FULL PHOTO -->
-  <div class="od-fullphoto"></div>
 
   <!-- THERAPIST'S PROFILE -->
-  <section class="od-sec white reveal">
-    <p class="od-en">Therapist's Profile</p>
-    <p class="od-ja">オーナー・セラピスト</p>
-    <div class="od-rule"></div>
-    <div class="od-profile-wrap">
-      <div class="od-profile-img"></div>
-      <p class="od-prof-name">オーナー名</p>
-      <p class="od-prof-title">Owner · Certified Esthetician</p>
-      <p class="od-prof-text">
-        美容の道に入って○年。大手エステサロンでの経験を経て、「ひとりひとりに寄り添った施術」を届けるため独立しました。よもぎ蒸しとフェイシャルを組み合わせ、外側と内側の両面からアプローチする施術が得意です。お客様の変化を間近で感じられることが、この仕事の何よりの喜びです。
-      </p>
-      <div class="od-badges">
-        <span class="od-badge">AEAジュニアエステティシャン</span>
-        <span class="od-badge">よもぎ蒸しアドバイザー</span>
-        <span class="od-badge">アロマテラピー検定1級</span>
-      </div>
+  <section class="sec white reveal">
+    <span class="sec-label">Beauty Therapist's Profile</span>
+    <h2 class="sec-title">オーナーより</h2>
+    <p class="sec-ja">プロフィール</p>
+    <div class="liner"></div>
+    <img
+      src="https://scontent-nrt1-2.cdninstagram.com/v/t51.75761-19/500327599_17886915015270828_5550590808537890350_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=102&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=teY5wsFAkxEQ7kNvwFFeJX5&_nc_oc=Adp4ac9Atk1UT5QGZL2wULmTA81EjaYLQOv4sLB2G7oOCTOlQDTJLaHcTIlK-mWige-SkyPq2FLbuccLUMTxGnPN&_nc_zt=24&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=y_aHY0ltAWom5skqtzFtCQ&_nc_ss=7b60f&oh=00_Af_eTaOE2cxVZr3wqd3oaNwd9yTjSU0GVsURZJ9AiSL4RA&oe=6A3910F8"
+      alt="サロンオーナー"
+      class="profile-photo"
+      onerror="this.style.background='#ccc8c2';this.removeAttribute('src');"
+    />
+    <p class="profile-name">サロンオーナー</p>
+    <p class="profile-role">Owner · Therapist · private salon merci</p>
+    <div class="profile-body">
+      <p>merciでは、施術の技術はもちろん、あなたの体の声を聞き、一緒に"なりたい自分"へ近づくためのお手伝いをさせていただきます。</p>
+      <p>長年アスリートとして体と向き合ってきた経験から、筋膜・血流・リンパの流れを熟知した施術を行っています。表面だけでなく体の根本から改善するアプローチで、毎回のカウンセリングで体調・肌状態・お悩みを丁寧にヒアリング。その日のあなたに最適なケアをオーダーメイドで組み立てます。</p>
+    </div>
+    <div class="profile-certs">
+      <span class="cert">フェイシャルエステ</span>
+      <span class="cert">よもぎ蒸し</span>
+      <span class="cert">元アスリートセラピスト</span>
     </div>
   </section>
 
-  <!-- EFFECTS OF YOMOGI MUSHI -->
-  <section class="od-sec alt reveal">
-    <p class="od-en">Effects of Yomogi</p>
-    <p class="od-ja">よもぎ蒸しの効果</p>
-    <div class="od-rule"></div>
-    <div class="od-body" style="margin-bottom:32px;">
-      <p>天然よもぎの薬草蒸気が全身に浸透し、温めることで<br>カラダの内側から整えていきます。</p>
-    </div>
-    <div class="od-effects-grid">
-      <div class="od-effect">
-        <div class="od-eff-icon">🌿</div>
-        <div class="od-eff-name">デトックス</div>
-        <div class="od-eff-desc">温熱効果で老廃物を排出。むくみや毒素を外へ</div>
-      </div>
-      <div class="od-effect">
-        <div class="od-eff-icon">✨</div>
-        <div class="od-eff-name">美肌効果</div>
-        <div class="od-eff-desc">ターンオーバーを促進しくすみのないお肌へ</div>
-      </div>
-      <div class="od-effect">
-        <div class="od-eff-icon">🌸</div>
-        <div class="od-eff-name">婦人科系</div>
-        <div class="od-eff-desc">冷え・生理不順・ホルモンバランスの改善</div>
-      </div>
-      <div class="od-effect">
-        <div class="od-eff-icon">💆</div>
-        <div class="od-eff-name">リラクゼーション</div>
-        <div class="od-eff-desc">心身のストレスを解放しリラックス効果</div>
-      </div>
-    </div>
+  <!-- TREATMENT MENU ヘッダー写真 -->
+  <img
+    src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/549824938_17900698500270828_5690515012618376771_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G8We6e_Hqb0Q7kNvwFWXoZj&_nc_oc=AdrJg9JIQjL3Ut0O-YjzfOqko294h-qUh8ji9HfQrk4mkFRIW1jClg5HMZNdm_3iw7hCY2cTUQiFNS9vaQxnCn4w&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-fOmU3AetxZgDXVdMtBfqfdAfJXTOjBSqN_unG1o34KA&oe=6A39082B"
+    alt="Treatment"
+    style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:#c8c2ba;"
+    onerror="this.style.background='#c8c2ba';this.removeAttribute('src');"
+  />
+
+  <section class="sec white" style="padding-top:52px;padding-bottom:52px;" id="menu">
+    <span class="sec-label">Treatment Menu</span>
+    <h2 class="sec-title">メニュー・料金</h2>
+    <p class="sec-ja">施術メニュー</p>
   </section>
 
-  <!-- TREATMENT MENU -->
-  <section class="od-sec white reveal">
-    <p class="od-en">Treatment Menu</p>
-    <p class="od-ja">メニュー</p>
-    <div class="od-rule"></div>
+  <!-- MENU ITEMS -->
+  <div class="menu-list">
 
-    <!-- よもぎ蒸し紹介 -->
-    <div style="margin-bottom:44px;" class="reveal">
-      <div style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#e8e0d4,#d0c8bc);margin-bottom:20px;"></div>
-      <span class="od-menu-tag">YOMOGI MUSHI</span>
-      <p class="od-menu-en">よもぎ蒸し</p>
-      <p class="od-menu-ja">Yomogi Mushi</p>
-      <p class="od-menu-desc">
-        天然よもぎを使用した伝統的な蒸し療法。薬草の蒸気が全身に浸透し、
-        深いデトックスと温め効果をもたらします。
-        施術後はポカポカが続き、体の変化を感じていただけます。
-      </p>
-    </div>
-
-    <!-- フェイシャル紹介 -->
-    <div style="margin-bottom:44px;" class="reveal">
-      <div style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#e4d8d0,#c8b8b0);margin-bottom:20px;"></div>
-      <span class="od-menu-tag">FACIAL</span>
-      <p class="od-menu-en">フェイシャルエステ</p>
-      <p class="od-menu-ja">Facial Esthetics</p>
-      <p class="od-menu-desc">
-        お肌の状態を丁寧にカウンセリングし、個人に合わせたオーダーメイドのフェイシャルケアを提供。
-        クレンジングからパックまで、丁寧なお手当でお肌本来の輝きを取り戻します。
-      </p>
-    </div>
-
-    <!-- 料金リスト -->
-    <div class="od-menu-list reveal">
-      <div class="od-menu-item">
-        <span class="od-menu-tag">Trial · 初回限定</span>
-        <p class="od-menu-en">初回体験コース</p>
-        <p class="od-menu-ja">よもぎ蒸し＋フェイシャル</p>
-        <p class="od-menu-time">60分（カウンセリング込み）</p>
-        <p class="od-menu-desc">初めての方限定。よもぎ蒸しとフェイシャルを組み合わせた体験コース。お悩みやご希望をじっくりお伺いします。</p>
-        <p class="od-menu-price">¥○,○○○<sub>（税込）初回特別価格</sub></p>
-      </div>
-      <div class="od-menu-item">
-        <span class="od-menu-tag">Yomogi Mushi</span>
-        <p class="od-menu-en">よもぎ蒸し単品</p>
-        <p class="od-menu-time">40分</p>
-        <p class="od-menu-price">¥○,○○○<sub>（税込）</sub></p>
-      </div>
-      <div class="od-menu-item">
-        <span class="od-menu-tag">Facial</span>
-        <p class="od-menu-en">フェイシャルエステ単品</p>
-        <p class="od-menu-time">60分</p>
-        <p class="od-menu-price">¥○,○○○<sub>（税込）</sub></p>
-      </div>
-      <div class="od-menu-item">
-        <span class="od-menu-tag">Combo · 組み合わせ</span>
-        <p class="od-menu-en">よもぎ蒸し＋フェイシャル</p>
-        <p class="od-menu-time">90分</p>
-        <p class="od-menu-price">¥○,○○○<sub>（税込）</sub></p>
+    <div class="menu-item reveal">
+      <img
+        src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/549824938_17900698500270828_5690515012618376771_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G8We6e_Hqb0Q7kNvwFWXoZj&_nc_oc=AdrJg9JIQjL3Ut0O-YjzfOqko294h-qUh8ji9HfQrk4mkFRIW1jClg5HMZNdm_3iw7hCY2cTUQiFNS9vaQxnCn4w&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-fOmU3AetxZgDXVdMtBfqfdAfJXTOjBSqN_unG1o34KA&oe=6A39082B"
+        alt="よもぎ蒸し＋フェイシャルセット"
+        class="menu-item-photo"
+        onerror="this.style.background='#ccc8c2';this.removeAttribute('src');"
+      />
+      <div class="menu-item-body">
+        <span class="menu-item-tag">Popular · 人気No.1</span>
+        <p class="menu-item-en">Yomogi &amp; Facial Set</p>
+        <p class="menu-item-ja">よもぎ蒸し＋フェイシャルセット</p>
+        <p class="menu-item-desc">よもぎとハーブ蒸しで体を温めた後、毛穴が開いた状態でフェイシャルエステを施術。毛穴ケア・くすみ改善・ハリツヤアップが期待できるmerciの看板コース。美容成分の吸収率が格段に上がり、翌日の肌の違いを実感していただけます。</p>
+        <div class="menu-item-info">
+          <span class="menu-item-time">約 90 min.</span>
+          <span class="menu-item-price">¥○○,○○○<sub>税込</sub></span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- TREATMENT FLOW -->
-  <section class="od-sec alt reveal">
-    <p class="od-en">Treatment Flow</p>
-    <p class="od-ja">施術の流れ</p>
-    <div class="od-rule"></div>
-    <div class="od-flow">
-      <div class="od-flow-item">
-        <span class="od-flow-num">01</span>
-        <div class="od-flow-body">
+    <div class="menu-item reveal">
+      <img
+        src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/610252204_17913460014270828_8075496237430635369_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G2Qv9RPkiuQQ7kNvwHwJIge&_nc_oc=AdqNX8eMzpmwSTSAGAAigOnnl7yzElaxu49Di9hZYsARrbLsH6wsht_LHQdC3ivnvkhPxmhgbIPcjS2Y8UE9OIVt&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af8AOH-KwLW_lILnZUSRiyU7z4ixffs-3VZcZ-_4xltz-w&oe=6A3927B0"
+        alt="よもぎ蒸し"
+        class="menu-item-photo"
+        onerror="this.style.background='#ccc8c2';this.removeAttribute('src');"
+      />
+      <div class="menu-item-body">
+        <span class="menu-item-tag">Single</span>
+        <p class="menu-item-en">Yomogi &amp; Herb Steam</p>
+        <p class="menu-item-ja">よもぎ＆ハーブ蒸し</p>
+        <p class="menu-item-desc">お悩みに合わせたよもぎ＋ハーブブレンドを選択。体をじんわり温め、デトックス・冷え改善・婦人科系ケアをサポートします。よもぎの持つクロロフィル・フラボノイド・ビタミン類が高いデトックス効果を発揮します。</p>
+        <div class="menu-item-info">
+          <span class="menu-item-time">約 40〜60 min.</span>
+          <span class="menu-item-price">¥○,○○○<sub>税込</sub></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item reveal">
+      <img
+        src="https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/588711883_17912474460270828_4734134785134710276_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=KfF3TFvAJEcQ7kNvwG7HxO9&_nc_oc=Ado-AG1MP7-SUJrW2zj99TDfJEcl96W6a3nr0BADErzsU-Xt52Hb_9eCoeFzS4DDhG5MQfMa1Ye3h6FO0Hxt0dKy&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-n7pA_5blL9zgutow8Xxxv0HOlfwx8WyaUUpy4IHGpSg&oe=6A3927C6"
+        alt="フェイシャルエステ"
+        class="menu-item-photo"
+        onerror="this.style.background='#ccc8c2';this.removeAttribute('src');"
+      />
+      <div class="menu-item-body">
+        <span class="menu-item-tag">Single</span>
+        <p class="menu-item-en">Facial Esthetics</p>
+        <p class="menu-item-ja">フェイシャルエステ</p>
+        <p class="menu-item-desc">毛穴ケア・くすみ改善・リフトアップに特化したオールハンドフェイシャル。ひとりひとりの肌状態に合わせたカスタムケアを提供します。丁寧なカウンセリングで最適なコースをご提案します。</p>
+        <div class="menu-item-info">
+          <span class="menu-item-time">約 60 min.</span>
+          <span class="menu-item-price">¥○,○○○<sub>税込</sub></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item reveal">
+      <img
+        src="https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/641786649_17920056783270828_5084836894246848682_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFuIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Rx587FCgVG0Q7kNvwHGpJgT&_nc_oc=AdqzzI_uQFLka0D-ckGDja7VVK0y4rB1PTbIHVK5gScV24HFTutnG7FdO-OGWfLHqVsQ9vJ-Bzt8GMCdI9xNN3iG&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=B6gEmubQCYRyVjGc4qMsXA&_nc_ss=7b60f&oh=00_Af-Dw0IE90vTvePrpg7gMtgdPsDYJYS__pzyga7MQnkPkg&oe=6A39341A"
+        alt="ボディケア"
+        class="menu-item-photo"
+        onerror="this.style.background='#ccc8c2';this.removeAttribute('src');"
+      />
+      <div class="menu-item-body">
+        <span class="menu-item-tag">Option</span>
+        <p class="menu-item-en">Body Care</p>
+        <p class="menu-item-ja">ボディケア</p>
+        <p class="menu-item-desc">元アスリートセラピストの知識を活かしたボディケア。筋膜・リンパ・血流にアプローチし、体の疲れやコリを根本からほぐします。蓄積した疲労やむくみをすっきりと整えます。</p>
+        <div class="menu-item-info">
+          <span class="menu-item-time">約 60〜90 min.</span>
+          <span class="menu-item-price">¥○○,○○○<sub>税込</sub></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="menu-note-box reveal">
+    💡 <strong>初回体験特典あり</strong><br>
+    詳しい料金はInstagram DMまたはLINEよりご確認ください。
+  </div>
+
+  <!-- FLOW -->
+  <section class="sec reveal">
+    <span class="sec-label">Treatment Flow</span>
+    <h2 class="sec-title">はじめての方も安心<br>施術の流れ</h2>
+    <p class="sec-ja">施術フロー</p>
+    <div class="liner"></div>
+    <div class="flow-list">
+      <div class="flow-item">
+        <span class="flow-num">01</span>
+        <div class="flow-body">
           <h3>ご予約</h3>
-          <p>InstagramのDMまたはLINEより、ご希望の日時・メニューをお知らせください。</p>
+          <p>InstagramのDM、またはLINEよりご希望日時をお知らせください。完全予約制で待ち時間がありません。</p>
         </div>
       </div>
-      <div class="od-flow-item">
-        <span class="od-flow-num">02</span>
-        <div class="od-flow-body">
+      <div class="flow-item">
+        <span class="flow-num">02</span>
+        <div class="flow-body">
           <h3>ご来店・カウンセリング</h3>
-          <p>お肌の状態・お悩み・ご希望を丁寧にヒアリング。最適なプランをご提案します。</p>
+          <p>肌状態・体調・お悩みを丁寧にヒアリング。その日に最適なケアをご提案します。</p>
         </div>
       </div>
-      <div class="od-flow-item">
-        <span class="od-flow-num">03</span>
-        <div class="od-flow-body">
-          <h3>施術</h3>
-          <p>完全個室のプライベート空間で、ゆったりとお過ごしください。</p>
+      <div class="flow-item">
+        <span class="flow-num">03</span>
+        <div class="flow-body">
+          <h3>よもぎ蒸し</h3>
+          <p>お悩みに合わせたハーブをブレンド。じんわりと体を芯から温めながら、全身の毛穴を開いていきます（約30〜40分）。</p>
         </div>
       </div>
-      <div class="od-flow-item">
-        <span class="od-flow-num">04</span>
-        <div class="od-flow-body">
-          <h3>アフターカウンセリング</h3>
-          <p>お肌の変化・ご自宅でのセルフケアアドバイスをお伝えします。</p>
+      <div class="flow-item">
+        <span class="flow-num">04</span>
+        <div class="flow-body">
+          <h3>フェイシャルエステ</h3>
+          <p>毛穴が開いた状態で美容成分を浸透。オールハンドで丁寧に施術します。</p>
         </div>
       </div>
-      <div class="od-flow-item">
-        <span class="od-flow-num">05</span>
-        <div class="od-flow-body">
-          <h3>ご帰宅</h3>
-          <p>次回のご予約もその場でお取りいただけます。お気軽にご相談ください。</p>
+      <div class="flow-item">
+        <span class="flow-num">05</span>
+        <div class="flow-body">
+          <h3>アフターカウンセリング・ご帰宅</h3>
+          <p>施術後の肌状態の確認と、自宅でできるセルフケアのアドバイス。次回のプランもご提案します。</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CUSTOMERS' VOICE -->
-  <section class="od-sec white reveal">
-    <p class="od-en">Customers' Voice</p>
-    <p class="od-ja">お客様の声</p>
-    <div class="od-rule"></div>
-    <div class="od-voice-item reveal">
-      <div class="od-stars">★★★★★</div>
-      <p class="od-voice-title">施術後の肌のもちが全然違います</p>
-      <p class="od-voice-body">よもぎ蒸しとフェイシャルを同時にできるサロンをずっと探していました。施術中はとてもリラックスでき、終わった後の肌がつるつるでびっくりしました。翌朝の化粧ノリが明らかに違います。</p>
-      <p class="od-voice-attr">30s · Female</p>
+  <section class="sec white reveal" id="voice">
+    <span class="sec-label">Customers' Voice</span>
+    <h2 class="sec-title">お客様の声</h2>
+    <p class="sec-ja">お客様より</p>
+    <div class="liner"></div>
+    <div class="voice-item reveal">
+      <div class="voice-stars">★★★★★</div>
+      <p class="voice-title">「施術後、肌がワントーン明るくなりました」</p>
+      <p class="voice-body">よもぎ蒸しの後にフェイシャルをしてもらったら、毛穴がスッキリして肌のくすみが取れました。翌朝、鏡を見て驚くくらい変わっていました。元アスリートさんならではの知識で、体の説明もわかりやすく安心できます。</p>
+      <p class="voice-attr">30s · 会社員</p>
     </div>
-    <div class="od-voice-item reveal">
-      <div class="od-stars">★★★★★</div>
-      <p class="od-voice-title">冷え性が改善されてきた実感があります</p>
-      <p class="od-voice-body">月1回通い続けて3ヶ月。冷え性と生理不順が気になっていたのですが、体の変化を感じています。丁寧なカウンセリングで毎回悩みを聞いていただけるのも嬉しいです。</p>
-      <p class="od-voice-attr">40s · Female</p>
+    <div class="voice-item reveal">
+      <div class="voice-stars">★★★★★</div>
+      <p class="voice-title">「冷え性が改善されて、体が軽くなりました」</p>
+      <p class="voice-body">ずっと冷え性で悩んでいましたが、よもぎ蒸しを続けるうちに体が温まりやすくなってきました。完全個室で気兼ねなく施術を受けられるのもありがたいです。</p>
+      <p class="voice-attr">40s · 主婦</p>
     </div>
-    <div class="od-voice-item reveal">
-      <div class="od-stars">★★★★★</div>
-      <p class="od-voice-title">プライベート空間で安心できました</p>
-      <p class="od-voice-body">完全個室なので、他のお客様を気にせずゆっくり過ごせました。オーナーさんもとても気さくで話しやすく、また絶対行きたいです。</p>
-      <p class="od-voice-attr">20s · Female</p>
+    <div class="voice-item reveal">
+      <div class="voice-stars">★★★★★</div>
+      <p class="voice-title">「毎月の楽しみになっています」</p>
+      <p class="voice-body">忙しい日々の中で、ここに来る時間だけが自分へのご褒美です。カウンセリングが丁寧で、毎回その日の体調に合わせてもらえるのが嬉しいです。肌の状態が明らかに改善されました。</p>
+      <p class="voice-attr">30s · 看護師</p>
     </div>
-    <div class="od-voice-item reveal">
-      <div class="od-stars">★★★★★</div>
-      <p class="od-voice-title">Google口コミでの評価通りでした</p>
-      <p class="od-voice-body">Googleで見つけて半信半疑でしたが、施術のクオリティが高くて驚きました。よもぎ蒸しが初めてでしたが、丁寧に説明していただけて安心して受けられました。</p>
-      <p class="od-voice-attr">30s · Female</p>
-    </div>
+    <a href="https://www.instagram.com/privatesalonmerci" target="_blank" class="voice-more">
+      Instagram でもっと見る →
+    </a>
   </section>
 
-  <!-- FULL PHOTO 2 -->
-  <div class="od-fullphoto" style="background:linear-gradient(135deg,#ddd5cc,#c5bdb4);"></div>
-
-  <!-- ACCESS -->
-  <section class="od-sec alt reveal">
-    <p class="od-en">Access</p>
-    <p class="od-ja">アクセス</p>
-    <div class="od-rule"></div>
-    <div class="od-map">Map</div>
-    <table class="od-info">
-      <tr>
-        <td>Salon</td>
-        <td><strong>private salon merci</strong></td>
-      </tr>
-      <tr>
-        <td>Station</td>
-        <td><strong>東武東上線 東武練馬駅</strong><br>徒歩10分</td>
-      </tr>
-      <tr>
-        <td>Address</td>
-        <td>東京都板橋区 ○○-○○<br><small style="color:var(--lg);font-size:11px;">※詳細は予約時にご案内します</small></td>
-      </tr>
-      <tr>
-        <td>Hours</td>
-        <td>○○:○○〜○○:○○<br><small style="color:var(--lg);font-size:11px;">（要予約・時間外相談可）</small></td>
-      </tr>
-      <tr>
-        <td>Holiday</td>
-        <td>不定休（Instagramにてお知らせ）</td>
-      </tr>
-      <tr>
-        <td>Contact</td>
-        <td>Instagram DM：<a href="https://www.instagram.com/privatesalonmerci" target="_blank" style="color:var(--acc);">@privatesalonmerci</a></td>
-      </tr>
-    </table>
-  </section>
-
-  <!-- RESERVATION -->
-  <section class="od-sec dark reveal" id="reservation">
-    <div class="od-res-inner">
-      <p class="od-en">Reservation</p>
-      <p class="od-ja">ご予約・お問い合わせ</p>
-      <div class="od-rule"></div>
-      <p class="od-res-text">
-        完全予約制のため、お早めのご予約をおすすめします。<br>
-        初めての方もInstagramのDMでお気軽にご相談ください。<br>
-        ご希望の日時・メニューなど承ります。
-      </p>
-      <div class="od-btns">
-        <a href="https://www.instagram.com/privatesalonmerci" target="_blank" class="od-btn insta">
-          📷 Instagramから予約・問い合わせ
-        </a>
-        <a href="https://lin.ee/XXXXXXX" class="od-btn line">
-          💬 LINEで予約・問い合わせ
-        </a>
+  <!-- FAQ -->
+  <section class="sec reveal">
+    <span class="sec-label">FAQ</span>
+    <h2 class="sec-title">よくあるご質問</h2>
+    <p class="sec-ja">FAQ</p>
+    <div class="liner"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">初めてでも大丈夫ですか？<span class="faq-toggle">+</span></div>
+        <div class="faq-a">はい、もちろんです。初めての方には丁寧なカウンセリングを行い、体調やお悩みに合わせたコースをご提案いたします。不安なことは何でもお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">生理中でも施術を受けられますか？<span class="faq-toggle">+</span></div>
+        <div class="faq-a">よもぎ蒸しは生理中・生理直前はお控えいただいています。フェイシャルエステやボディケアは受けていただけますので、ご予約時にお知らせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">妊娠中でも受けられますか？<span class="faq-toggle">+</span></div>
+        <div class="faq-a">妊娠中はよもぎ蒸しはお控えいただいています。ご心配な方は事前にかかりつけ医にご相談の上、ご予約ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">何を着て来ればいいですか？<span class="faq-toggle">+</span></div>
+        <div class="faq-a">よもぎ蒸し用の着替えはこちらでご用意しています。動きやすい服装でお越しいただければ大丈夫です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">効果はいつ頃から感じられますか？<span class="faq-toggle">+</span></div>
+        <div class="faq-a">個人差はありますが、初回から肌のツヤ感・体の温かさを感じていただける方が多いです。継続して通うことで、冷え改善・肌の変化など体質の変化を実感いただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">男性でも利用できますか？<span class="faq-toggle">+</span></div>
+        <div class="faq-a">現在は女性専用サロンとして営業しています。詳しくはInstagramのDMよりお問い合わせください。</div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="od-footer">
-    <p class="od-footer-logo">private salon merci</p>
-    <div class="od-footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">特定商取引法</a>
-      <a href="https://www.instagram.com/privatesalonmerci" target="_blank">Instagram</a>
+  <!-- ACCESS -->
+  <section class="sec white reveal" id="access">
+    <span class="sec-label">Access</span>
+    <h2 class="sec-title">アクセス</h2>
+    <p class="sec-ja">アクセス</p>
+    <div class="liner"></div>
+    <div class="map-box">Map</div>
+    <table class="access-table">
+      <tr><td>Salon</td><td><strong>private salon merci</strong></td></tr>
+      <tr><td>Station</td><td><strong>東武東上線 東武練馬駅</strong><br>徒歩10分</td></tr>
+      <tr><td>Address</td><td>東京都板橋区 ○○-○○<br><small style="color:var(--light);font-size:11px;">※詳細は予約時にご案内します</small></td></tr>
+      <tr><td>Hours</td><td>○○:○○ — ○○:○○<br><small style="color:var(--light);font-size:11px;">（要予約・時間外相談可）</small></td></tr>
+      <tr><td>Holiday</td><td>不定休（Instagramにてお知らせ）</td></tr>
+      <tr><td>Contact</td><td><a href="https://www.instagram.com/privatesalonmerci" target="_blank">@privatesalonmerci</a></td></tr>
+    </table>
+  </section>
+
+  <!-- RESERVATION -->
+  <section class="sec dark reveal" id="reservation">
+    <span class="sec-label">Reservation</span>
+    <h2 class="sec-title">まずは、<br>初回体験からどうぞ</h2>
+    <p class="sec-ja" style="margin-bottom:44px;">ご予約・お問い合わせ</p>
+    <p class="res-text">
+      完全予約制のため、お早めのご予約をおすすめします。<br>
+      初めての方もInstagramのDMやLINEで<br>お気軽にご相談ください。
+    </p>
+    <div class="res-btns">
+      <a href="https://lin.ee/XXXXXXX" class="res-btn line">💬 LINEで予約・問い合わせ</a>
+      <a href="https://www.instagram.com/privatesalonmerci" target="_blank" class="res-btn insta">📷 Instagramから予約・問い合わせ</a>
     </div>
-    <p class="od-footer-copy">© 2026 private salon merci. All rights reserved. / 東京都板橋区</p>
+    <p class="res-note">
+      ご希望の日時・メニューなどご相談承ります。<br>
+      お気軽にメッセージください。
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-logo">private salon merci</p>
+    <nav class="footer-nav">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#voice">Voice</a>
+      <a href="#access">Access</a>
+      <a href="https://www.instagram.com/privatesalonmerci" target="_blank">Instagram</a>
+    </nav>
+    <p class="footer-copy">© 2026 private salon merci. All rights reserved.<br>東京都板橋区 · 東武練馬駅 徒歩10分</p>
   </footer>
 
 </div><!-- /lp -->
 
-<!-- FLOAT CTA -->
-<div class="od-float" id="odFloat">
+<div class="float-cta" id="floatCta">
   <a href="#reservation">初回体験を予約する →</a>
 </div>
 
 <script>
-const hero   = document.querySelector('.od-hero');
-const odFloat = document.getElementById('odFloat');
-new IntersectionObserver(entries => {
-  odFloat.style.display = entries[0].isIntersecting ? 'none' : 'block';
-}, { threshold: 0 }).observe(hero);
+const hero = document.querySelector('.hero');
+const floatCta = document.getElementById('floatCta');
+if (hero && floatCta) {
+  new IntersectionObserver(entries => {
+    floatCta.style.display = entries[0].isIntersecting ? 'none' : 'block';
+  }, { threshold: 0 }).observe(hero);
+}
 
-const revealObs = new IntersectionObserver(entries => {
+const ro = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('visible');
-    revealObs.unobserve(e.target);
+    ro.unobserve(e.target);
   });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
@@ -879,6 +1032,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (!t) return;
     e.preventDefault();
     t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   });
 });
 </script>
